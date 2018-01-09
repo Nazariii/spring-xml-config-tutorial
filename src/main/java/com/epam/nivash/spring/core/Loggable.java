@@ -1,5 +1,7 @@
 package com.epam.nivash.spring.core;
 
+import com.epam.nivash.spring.core.event.Event;
+
 public interface Loggable {
-    void logEvent(String msg);
+    void logEvent(Event msg);
 }
