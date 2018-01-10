@@ -8,13 +8,6 @@
         http://www.springframework.org/schema/util
         http://www.springframework.org/schema/util/spring-util.xsd">
 
-    <bean id="client" class="com.epam.nivash.spring.core.Client">
-        <constructor-arg value="${id}"/>
-        <constructor-arg value="${name}"/>
-        <property name="greeting"
-                  value="${greeting}"/>
-    </bean>
-
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>

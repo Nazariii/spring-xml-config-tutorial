@@ -1,15 +1,16 @@
 package com.epam.nivash.spring.core.logger;
 
 import com.epam.nivash.spring.core.event.Event;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.Set;
 
+@Component
 public class CombinedEventLogger implements Loggable {
-    private Set<Loggable> loggers;
 
-    public CombinedEventLogger(Set<Loggable> loggers) {
-        this.loggers = loggers;
-    }
+    @Resource(name = "eventLoggerList")
+    private Set<Loggable> loggers;
 
     @Override
     public void logEvent(Event msg) {

@@ -14,7 +14,7 @@
     <import resource="logger.xml"/>
     <import resource="client.xml"/>
 
-    <util:map id="loggerMap">
+    <util:map id="loggerMap" key-type="com.epam.nivash.spring.core.event.EventType">
         <entry key="INFO" value-ref="consoleEventLogger"/>
         <entry key="ERROR" value-ref="combinedEventLogger"/>
     </util:map>

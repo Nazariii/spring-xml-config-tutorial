@@ -2,6 +2,7 @@ package com.epam.nivash.spring.core.logger;
 
 import com.epam.nivash.spring.core.event.Event;
 
+import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -25,6 +26,7 @@ public class FileEventLogger implements Loggable {
         }
     }
 
+    @PostConstruct
     public void init() {
         System.out.println("FileEventLogger init method worked");
         if (!Files.exists(Paths.get(fileName))) {

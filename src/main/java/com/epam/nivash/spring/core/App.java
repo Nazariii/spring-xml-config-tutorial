@@ -4,7 +4,6 @@ import com.epam.nivash.spring.core.event.Event;
 import com.epam.nivash.spring.core.event.EventType;
 import com.epam.nivash.spring.core.logger.Loggable;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
