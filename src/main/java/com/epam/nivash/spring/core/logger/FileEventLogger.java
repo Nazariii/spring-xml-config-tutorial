@@ -10,7 +10,11 @@ import java.util.Collections;
 
 public class FileEventLogger implements Loggable {
 
-    private String fileName = "temporaryFile";
+    private String fileName;
+
+    public FileEventLogger(String fileName) {
+        this.fileName = fileName;
+    }
 
     @Override
     public void logEvent(Event msg) {
@@ -22,7 +26,7 @@ public class FileEventLogger implements Loggable {
     }
 
     public void init() {
-        System.out.println("init method worked");
+        System.out.println("FileEventLogger init method worked");
         if (!Files.exists(Paths.get(fileName))) {
             try {
                 Files.createFile(Paths.get(fileName));

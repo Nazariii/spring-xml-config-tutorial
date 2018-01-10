@@ -10,13 +10,9 @@ public class CacheFileEventLogger extends FileEventLogger {
     private int cashSize;
     private List<Event> cache = new ArrayList<>();
 
-    public CacheFileEventLogger(int cashSize) {
+    public CacheFileEventLogger(String filename, Integer cashSize) {
+        super(filename);
         this.cashSize = cashSize;
-    }
-
-    @Override
-    public void init() {
-        super.init();
     }
 
     @Override
@@ -29,7 +25,6 @@ public class CacheFileEventLogger extends FileEventLogger {
     }
 
     public void writeEventsFromCache() {
-        System.out.println("writing log events" + cache.size());
         cache.forEach(System.out::println);
         cache.forEach(super::logEvent);
     }

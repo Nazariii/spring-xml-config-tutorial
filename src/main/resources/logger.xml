@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+ 		http://www.springframework.org/schema/beans
+ 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+    <bean id="eventLogger" class="com.epam.nivash.spring.core.logger.ConsoleEventLogger"/>
+
+    <bean id="eventFileLogger" class="com.epam.nivash.spring.core.logger.FileEventLogger" init-method="init">
+        <constructor-arg index="0" type="java.lang.String" value="log.txt"/>
+    </bean>
+
+    <bean id="cacheFileEventLogger"
+          class="com.epam.nivash.spring.core.logger.CacheFileEventLogger"
+          destroy-method="destroy"
+          parent="eventFileLogger">
+        <constructor-arg index="1" type="java.lang.Integer">
+            <value>2</value>
+        </constructor-arg>
+    </bean>
+
+</beans>
