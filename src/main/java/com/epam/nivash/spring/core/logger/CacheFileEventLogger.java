@@ -25,7 +25,7 @@ public class CacheFileEventLogger extends FileEventLogger {
     }
 
     public void writeEventsFromCache() {
-        cache.forEach(System.out::println);
+//        cache.forEach(System.out::println);
         cache.forEach(super::logEvent);
     }
 

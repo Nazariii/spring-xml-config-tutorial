@@ -10,12 +10,20 @@
     <bean id="client" class="com.epam.nivash.spring.core.Client">
         <constructor-arg value="1"/>
         <constructor-arg value="Nazar"/>
+        <property name="greeting"
+                  value="Hello all!"/>
     </bean>
 
 
     <bean id="app" class="com.epam.nivash.spring.core.App">
         <constructor-arg ref="client"/>
         <constructor-arg ref="cacheFileEventLogger"/>
+        <constructor-arg>
+            <map>
+                <entry key="INFO" value-ref="consoleEventLogger"/>
+                <entry key="ERROR" value-ref="combinedEventLogger"/>
+            </map>
+        </constructor-arg>
     </bean>
 
 

@@ -5,10 +5,19 @@
  		http://www.springframework.org/schema/beans
  		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
-    <bean id="eventLogger" class="com.epam.nivash.spring.core.logger.ConsoleEventLogger"/>
+    <bean id="consoleEventLogger" class="com.epam.nivash.spring.core.logger.ConsoleEventLogger"/>
 
     <bean id="eventFileLogger" class="com.epam.nivash.spring.core.logger.FileEventLogger" init-method="init">
         <constructor-arg index="0" type="java.lang.String" value="log.txt"/>
+    </bean>
+
+    <bean id="combinedEventLogger" class="com.epam.nivash.spring.core.logger.CombinedEventLogger">
+        <constructor-arg>
+            <set>
+                <ref bean="consoleEventLogger"/>
+                <ref bean="cacheFileEventLogger"/>
+            </set>
+        </constructor-arg>
     </bean>
 
     <bean id="cacheFileEventLogger"
