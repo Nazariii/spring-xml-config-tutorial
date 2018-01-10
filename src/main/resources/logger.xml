@@ -5,8 +5,6 @@
  		http://www.springframework.org/schema/beans
  		http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="consoleEventLogger" class="com.epam.nivash.spring.core.logger.ConsoleEventLogger"/>
-
     <bean id="eventFileLogger" class="com.epam.nivash.spring.core.logger.FileEventLogger" init-method="init">
         <constructor-arg index="0" type="java.lang.String" value="log.txt"/>
     </bean>

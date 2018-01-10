@@ -3,23 +3,28 @@ package com.epam.nivash.spring.core;
 import com.epam.nivash.spring.core.event.Event;
 import com.epam.nivash.spring.core.event.EventType;
 import com.epam.nivash.spring.core.logger.Loggable;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.Map;
 
+@Component
 public class App {
+    @Autowired
     private Client client;
+
+    @Autowired
     private Loggable eventLogger;
+
+    //Autowire trying to find list of all beans
+    @Resource(name = "loggerMap")
     private Map<EventType, Loggable> loggers;
 
     public App() {
-    }
-
-    public App(Client client, Loggable eventLogger, Map<EventType, Loggable> loggers) {
-        this.client = client;
-        this.eventLogger = eventLogger;
-        this.loggers = loggers;
     }
 
     public void logEvent(String msg, Event event, EventType type) {
