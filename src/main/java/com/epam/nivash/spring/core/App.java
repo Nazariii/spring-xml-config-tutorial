@@ -1,35 +1,35 @@
 package com.epam.nivash.spring.core;
 
 import com.epam.nivash.spring.core.event.Event;
+import com.epam.nivash.spring.core.logger.Loggable;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 
 public class App {
     private Client client;
     private Loggable eventLogger;
-    private Event event;
 
     public App() {
     }
 
-    public App(Client client, Loggable eventLogger, Event event) {
+    public App(Client client, Loggable eventLogger) {
         this.client = client;
         this.eventLogger = eventLogger;
-        this.event = event;
     }
 
-    public void logEvent(String msg) {
+    public void logEvent(String msg, ConfigurableApplicationContext context) {
         String message = msg.replaceAll(String.valueOf(client.getId()), client.getFullName());
+        Event event = context.getBean(Event.class);
         event.setMsg(message);
         eventLogger.logEvent(event);
     }
 
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
         App app = (App) context.getBean("app");
-        app.logEvent("Log for user 1");
+        app.logEvent("First Log for user 1", context);
+        app.logEvent("second Log for user 1", context);
+        app.logEvent("third log for user 1", context);
+        context.close();
     }
 }

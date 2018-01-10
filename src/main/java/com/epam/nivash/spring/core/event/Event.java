@@ -2,6 +2,7 @@ package com.epam.nivash.spring.core.event;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 import java.util.Random;
 import java.util.UUID;
 
@@ -32,6 +33,21 @@ public class Event {
 
     public LocalDate getDate() {
         return date;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Event event = (Event) o;
+        return Objects.equals(msg, event.msg) &&
+                Objects.equals(date, event.date);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(msg, date);
     }
 
     @Override

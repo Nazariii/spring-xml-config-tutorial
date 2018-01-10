@@ -9,15 +9,25 @@
         <constructor-arg value="1"/>
         <constructor-arg value="Nazar"/>
     </bean>
-    <bean id="eventLogger" class="com.epam.nivash.spring.core.ConsoleEventLogger"/>
+
+    <!--loggers-->
+    <bean id="eventLogger" class="com.epam.nivash.spring.core.logger.ConsoleEventLogger"/>
+    <bean id="eventFileLogger" class="com.epam.nivash.spring.core.logger.FileEventLogger" init-method="init"/>
+    <bean id="cacheFileEventLogger" class="com.epam.nivash.spring.core.logger.CacheFileEventLogger" init-method="init" destroy-method="destroy">
+        <constructor-arg value="2"/>
+    </bean>
+
+    <!--loggers-->
+
     <bean id="app" class="com.epam.nivash.spring.core.App">
         <constructor-arg ref="client"/>
-        <constructor-arg ref="eventLogger"/>
-        <constructor-arg ref="event"/>
+        <constructor-arg ref="cacheFileEventLogger"/>
     </bean>
+
+
     <bean id="event" class="com.epam.nivash.spring.core.event.Event" scope="prototype">
         <constructor-arg>
-            <bean class="java.time.LocalDate" factory-method="now"></bean>
+            <bean class="java.time.LocalDate" factory-method="now"/>
         </constructor-arg>
         <constructor-arg>
             <bean class="java.time.format.DateTimeFormatter" factory-method="ofLocalizedDate">
@@ -25,4 +35,5 @@
             </bean>
         </constructor-arg>
     </bean>
+
 </beans>

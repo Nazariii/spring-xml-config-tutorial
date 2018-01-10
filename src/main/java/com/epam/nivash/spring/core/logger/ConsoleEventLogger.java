@@ -1,4 +1,4 @@
-package com.epam.nivash.spring.core;
+package com.epam.nivash.spring.core.logger;
 
 import com.epam.nivash.spring.core.event.Event;
 
