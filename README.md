@@ -1,1 +1,1 @@
-## Spring core tutorial project
+## Spring core XML config tutorial project
