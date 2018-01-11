@@ -18,6 +18,7 @@ import java.util.Set;
 @Configuration
 @ComponentScan(basePackages = "com.epam.nivash.spring.core")
 @PropertySource(ignoreResourceNotFound = true, value = "classpath:client.properties")
+@EnableAspectJAutoProxy
 public class AppConfig {
 
     @Bean("eventLoggerList")
