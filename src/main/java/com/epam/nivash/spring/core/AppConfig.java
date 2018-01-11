@@ -3,14 +3,10 @@ package com.epam.nivash.spring.core;
 import com.epam.nivash.spring.core.event.Event;
 import com.epam.nivash.spring.core.event.EventType;
 import com.epam.nivash.spring.core.logger.Loggable;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.*;
 
-import javax.annotation.Resource;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -20,6 +16,8 @@ import java.util.Map;
 import java.util.Set;
 
 @Configuration
+@ComponentScan(basePackages = "com.epam.nivash.spring.core")
+@PropertySource(ignoreResourceNotFound = true, value = "classpath:client.properties")
 public class AppConfig {
 
     @Bean("eventLoggerList")

@@ -5,7 +5,7 @@ import com.epam.nivash.spring.core.event.EventType;
 import com.epam.nivash.spring.core.logger.Loggable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -34,7 +34,7 @@ public class App {
     }
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+        ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         App app = (App) context.getBean("app");
         app.logEvent("First Log for user 1", context.getBean(Event.class), EventType.ERROR);
         app.logEvent("second Log for user 1", context.getBean(Event.class), null);
