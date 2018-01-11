@@ -1,34 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:util="http://www.springframework.org/schema/util"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="
- 		http://www.springframework.org/schema/beans
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
  		http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/util
-        http://www.springframework.org/schema/util/spring-util.xsd
         http://www.springframework.org/schema/context
  		http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <import resource="logger.xml"/>
     <import resource="client.xml"/>
-
-    <util:map id="loggerMap" key-type="com.epam.nivash.spring.core.event.EventType">
-        <entry key="INFO" value-ref="consoleEventLogger"/>
-        <entry key="ERROR" value-ref="combinedEventLogger"/>
-    </util:map>
-
-    <bean id="event" class="com.epam.nivash.spring.core.event.Event" scope="prototype">
-        <constructor-arg>
-            <bean class="java.time.LocalDate" factory-method="now"/>
-        </constructor-arg>
-        <constructor-arg>
-            <bean class="java.time.format.DateTimeFormatter" factory-method="ofLocalizedDate">
-                <constructor-arg type="FormatStyle" value="LONG"/>
-            </bean>
-        </constructor-arg>
-    </bean>
 
     <context:annotation-config/>
     <context:component-scan base-package="com.epam.nivash.spring.core"/>

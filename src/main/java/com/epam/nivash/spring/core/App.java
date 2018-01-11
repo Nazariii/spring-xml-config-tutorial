@@ -23,9 +23,6 @@ public class App {
     @Resource(name = "loggerMap")
     private Map<EventType, Loggable> loggers;
 
-    public App() {
-    }
-
     public void logEvent(String msg, Event event, EventType type) {
         String message = msg.replaceAll(String.valueOf(client.getId()), client.getFullName());
         event.setMsg(message);

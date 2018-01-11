@@ -2,17 +2,19 @@ package com.epam.nivash.spring.core.logger;
 
 import com.epam.nivash.spring.core.event.Event;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PreDestroy;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class CacheFileEventLogger extends FileEventLogger {
 
     private int cashSize;
     private List<Event> cache = new ArrayList<>();
 
-    public CacheFileEventLogger(String filename, @Value("2") Integer cashSize) {
+    public CacheFileEventLogger(@Value("log.txt") String filename, @Value("2") Integer cashSize) {
         super(filename);
         this.cashSize = cashSize;
     }

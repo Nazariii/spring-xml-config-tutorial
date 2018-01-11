@@ -1,6 +1,8 @@
 package com.epam.nivash.spring.core.logger;
 
 import com.epam.nivash.spring.core.event.Event;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
@@ -9,11 +11,12 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Collections;
 
+@Component("eventFileLogger")
 public class FileEventLogger implements Loggable {
 
     private String fileName;
 
-    public FileEventLogger(String fileName) {
+    public FileEventLogger(@Value("log.txt") String fileName) {
         this.fileName = fileName;
     }
 
